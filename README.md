@@ -1,3 +1,6 @@
+## CentOS7
+CentOS7コンテナのみ
+
 ## CentOS_MySQL
 CentOS7とMySQLコンテナを立てるdocker-compose
 
