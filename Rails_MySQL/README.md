@@ -16,3 +16,11 @@ Docker version 19.03.12, build 48a66213fe
 sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 3. ローカルのイメージ`mysql8.tar`と`rails6.tar`を`scp`や`rsync`で実施ホストに転送
+4. コンテナ起動前ファイル構成
+```
+$ tree --charset=C .
+.
+|-- README.md
+|-- mysql8.tar
+`-- rails6.tar
+```
