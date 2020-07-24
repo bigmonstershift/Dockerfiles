@@ -25,7 +25,7 @@ $ tree --charset=C .
 ```
 
 ## イメージ作成/コンテナ起動
-用意したイメージファイルをロード
+用意したイメージファイルをロード.
 ```
 docker load < vuejs_on_rails.tar
 ```
@@ -37,7 +37,7 @@ vuejs_on_rails.tar  latest              8e9d5d8843d4        21 hours ago        
 コンテナ起動
 ```
 docker load < vuejs_on_rails.tar
-docker-compose up
+docker-compose up -d
 ```
 ```
 $ docker ps
@@ -47,11 +47,12 @@ be38b02b9ffd        vuejs_on_rails      "/bin/bash"              30 seconds ago 
 ```
 
 ## config/database.yml編集
-`rails`コンテナに入りコンフィグ編集、DB作成、サーバ起動を実施
+`rails`コンテナに入りコンフィグ編集、DB作成、サーバ起動を実施.  
+laboプロジェクトの場所が`/root/labo`となっている.
 ```
-cd /labo
-sed -i -e "s/host: localhost/host: 172.17.0.2/" /labo/config/database.yml
-sed -i -e "s/password:/password: password/" /labo/config/database.yml
+cd /root/labo
+sed -i -e "s/host: localhost/host: 172.18.0.2/" /root/labo/config/database.yml
+sed -i -e "s/password:/password: password/" /root/labo/config/database.yml
 rails db:create
 rails server -b 0.0.0.0
 ```
