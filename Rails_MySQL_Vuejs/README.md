@@ -15,32 +15,29 @@ Docker version 19.03.12, build 48a66213fe
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
-3. ローカルのイメージ`mysql8.tar`と`vuejs_on_rails.tar`を`scp`や`rsync`で実施ホストに転送
+3. ローカルのイメージ`vuejs_on_rails.tar`を`scp`や`rsync`で実施ホストに転送
 4. コンテナ起動前ファイル構成
 ```
 $ tree --charset=C .
 .
 |-- README.md
-|-- mysql8.tar
 `-- vuejs_on_rails.tar
 ```
 
 ## イメージ作成/コンテナ起動
 用意したイメージファイルをロード
 ```
-docker load < mysql8.tar
 docker load < vuejs_on_rails.tar
 ```
 ```
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-mysql8              latest              78f01c2bd1db        20 hours ago        544MB
 vuejs_on_rails.tar  latest              8e9d5d8843d4        21 hours ago        1.11GB
 ```
 コンテナ起動
 ```
-docker run -d -p 3006:3006 --name mysql mysql8
-docker run -itd -p 3000:3000 --name rails_vue vuejs_on_rails.tar
+docker load < vuejs_on_rails.tar
+docker-compose up
 ```
 ```
 $ docker ps
